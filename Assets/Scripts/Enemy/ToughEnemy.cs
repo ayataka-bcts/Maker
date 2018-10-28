@@ -9,6 +9,8 @@ namespace Enemy {
         // Use this for initialization
         void Start()
         {
+            enemyManager = GameObject.Find("GameManager").GetComponent<EnemyManager>();
+
             life = 3;
             speed = 0.02f;
         }

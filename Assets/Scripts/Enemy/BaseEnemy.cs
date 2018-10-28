@@ -6,10 +6,10 @@ namespace Enemy
 {
     public abstract class BaseEnemy : MonoBehaviour, IDamageable
     {
-
         protected int life;
         protected float speed;
         protected bool isDead = false;
+        protected EnemyManager enemyManager;
         private Vector2 targetPos;
 
         /// <summary>
@@ -35,6 +35,7 @@ namespace Enemy
             if (isDead)
             {
                 Destroy(this.gameObject);
+                enemyManager.enemyCount--;
             }
         }
 
