@@ -40,3 +40,4 @@ Thumbs.db
 sysinfo.txt
 *.smproj
 ~$*
+!/Demo/*.exe
