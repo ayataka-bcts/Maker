@@ -6,9 +6,9 @@ namespace Enemy
 {
     public abstract class BaseEnemy : MonoBehaviour, IDamageable
     {
-        protected int life;
-        protected float speed;
-        protected bool isDead = false;
+        protected int life;                     // 耐久力
+        protected float speed;                  // 移動速度
+        protected bool isDead = false;          // 生死
         protected EnemyManager enemyManager;
         private Vector2 targetPos;
 

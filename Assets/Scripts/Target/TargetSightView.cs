@@ -8,6 +8,8 @@ public class TargetSightView : MonoBehaviour {
     [SerializeField]
     private ShakingSight shakingSight;      // 手ブレのためのクラス
 
+    private Image _image;                   // 照準の画像
+
     [SerializeField]
     private GameObject Arduino;
 
@@ -15,8 +17,6 @@ public class TargetSightView : MonoBehaviour {
     public static float yin;
 
     float speed = 1.0f;
-
-    private Image _image;                   // 照準の画像
 
     /// <summary>
     /// マウスで動かす
@@ -65,10 +65,10 @@ public class TargetSightView : MonoBehaviour {
 	void Update () {
 
         // 照準移動処理(マウス)
-        //SightMove();
+        SightMove();
 
         // 照準移動処理(スティック)
-        StickMove();
+        //StickMove();
 	}
 
     // 発砲してるときの見た目

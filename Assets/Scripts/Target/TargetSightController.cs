@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetSightController : MonoBehaviour {
 
-    public float distance = 50f;
+    private float distance = 50f;        // レイの飛距離(いじらなくてもいい)
 
     [SerializeField]
     private TargetSightView targetSightView;

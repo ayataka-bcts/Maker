@@ -5,11 +5,11 @@ using UnityEngine;
 public class ShakingSight : MonoBehaviour {
 
     [SerializeField]
-    private int shakeRange = 10;        // 手ブレの範囲(大きさ)
+    private int shakeRange = 10;             // 手ブレの範囲(大きさ)
     [SerializeField]
     private float shakeDuration = 0.1f;      // 手ブレの間隔(s)
 
-    private float timeCount = 0;
+    private float timeCount = 0;             // 経過時間
 
     private void Start()
     {
