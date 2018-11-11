@@ -28,7 +28,7 @@ public class TargetSightController : MonoBehaviour {
 
     void Fire()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(this.transform.position);
         RaycastHit hit = new RaycastHit();
 
         if (Physics.Raycast(ray, out hit, distance)){

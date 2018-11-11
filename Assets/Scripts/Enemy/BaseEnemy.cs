@@ -50,10 +50,13 @@ namespace Enemy
             transform.position = pos;
         }
 
+        // 以下仮実装なので消すかも
+
         protected void TargetPositioning()
         {
             targetPos.x = Random.Range(-1.0f, 1.0f);
             targetPos.y = Random.Range(-1.0f, 1.0f);
         }
+
     }
 }
