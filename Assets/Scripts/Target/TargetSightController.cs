@@ -9,6 +9,9 @@ public class TargetSightController : MonoBehaviour {
     [SerializeField]
     private TargetSightView targetSightView;
 
+    [SerializeField]
+    private ParticleSystem fireParticle;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -40,5 +43,7 @@ public class TargetSightController : MonoBehaviour {
                 hit.collider.GetComponent<IDamageable>().Damage();
             }
         }
+
+        fireParticle.Play();
     }
 }

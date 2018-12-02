@@ -19,7 +19,7 @@ public class ShakingSight : MonoBehaviour {
     /// <summary>
     /// Vector2を受け取ってshakeRange分だけランダムでブレさせる
     /// </summary>
-    public Vector2 Shake(Vector2 mPos)
+    public Vector3 Shake(Vector3 mPos)
     {
         if (timeCount > shakeDuration)
         {

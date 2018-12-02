@@ -7,6 +7,10 @@ public class TargetSightView : MonoBehaviour {
 
     [SerializeField]
     private ShakingSight shakingSight;      // 手ブレのためのクラス
+    [SerializeField]
+    private Camera mainCam;
+    [SerializeField]
+    private RectTransform canvas;
 
     private Image _image;                   // 照準の画像
 
@@ -24,9 +28,14 @@ public class TargetSightView : MonoBehaviour {
     private void SightMove()
     {
         // マウスの座標(xyのみ)を反映
-        var mousePos = Input.mousePosition;
-        mousePos.z = this.transform.position.z;
-        this.transform.position = shakingSight.Shake(mousePos);
+        var mousePos = mainCam.ScreenToViewportPoint(Input.mousePosition);
+        //this.transform.position = shakingSight.Shake(mousePos);
+        Vector2 ScreenPos = new Vector2(((mousePos.x * canvas.sizeDelta.x) - (canvas.sizeDelta.x * 0.5f)),
+                                            ((mousePos.y * canvas.sizeDelta.y) - (canvas.sizeDelta.y * 0.5f)));
+
+        this.transform.localPosition = new Vector3(ScreenPos.x, ScreenPos.y, 0);
+
+        Debug.Log(this.transform.position);
     }
 
     /// <summary>
