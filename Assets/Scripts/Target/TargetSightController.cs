@@ -8,6 +8,8 @@ public class TargetSightController : MonoBehaviour {
 
     [SerializeField]
     private TargetSightView targetSightView;
+    [SerializeField]
+    private PlayerStatus playerStatus;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +22,18 @@ public class TargetSightController : MonoBehaviour {
         // 射撃(スペースキー)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Fire();
-            //[TODO]TargetSightViewの関数を呼びたくない。
-            StartCoroutine(targetSightView.FireView());
+            // 手つなぎ状態のみ発砲可能
+            if (playerStatus.playerState == PlayerStatus.PlayerState.SHAKEHAND)
+            {
+                Fire();
+                //[TODO]TargetSightViewの関数を呼びたくない。
+                StartCoroutine(targetSightView.FireView());
+            }
+            // 発砲できないときのエフェクト(SEで教えてあげるのがいいかな)
+            else
+            {
+
+            }
         }
     }
 

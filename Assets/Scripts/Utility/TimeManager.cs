@@ -13,6 +13,8 @@ public class TimeManager : MonoBehaviour {
 
     private float count = 0;            // 経過時間
 
+    public float lestTime { get { return timeLimit - count; } }
+
 	// Use this for initialization
 	void Start () {
         count = 0;
