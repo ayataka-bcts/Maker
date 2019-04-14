@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Enemy {
     public class ToughEnemy : BaseEnemy, IDamageable
     {
@@ -9,7 +10,7 @@ namespace Enemy {
         // Use this for initialization
         void Start()
         {
-            enemyManager = GameObject.Find("GameManager").GetComponent<EnemyManager>();
+            enemyManager = this.transform.parent.GetComponent<EnemyManager>();
 
             life = 3;
             speed = 0.02f;

@@ -332,11 +332,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 272489167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd3a598ca032b847863dd6e9fca2855, type: 3}
+  m_Script: {fileID: 11500000, guid: 546f387f51c711843adc284869d65c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCount: {fileID: 704020876}
-  timeLimit: 30
+  scoreText: {fileID: 704020876}
 --- !u!114 &272489170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +854,10 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1675331899261592, guid: 780f540db3ea49248bcbe46117406ac4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f540db3ea49248bcbe46117406ac4, type: 2}
   m_IsPrefabAsset: 0
@@ -1053,6 +1056,10 @@ Prefab:
     - target: {fileID: 4562738684737658, guid: 745cfa906a5162542b58d9324ca2e074, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137670156830958, guid: 745cfa906a5162542b58d9324ca2e074, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 745cfa906a5162542b58d9324ca2e074, type: 2}
@@ -1369,7 +1376,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1451863684}
   - component: {fileID: 1451863683}
-  - component: {fileID: 1451863686}
   - component: {fileID: 1451863687}
   m_Layer: 0
   m_Name: GameManager
@@ -1390,7 +1396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 609079541}
-  scoreManager: {fileID: 1451863686}
+  scoreManager: {fileID: 272489169}
   timeManager: {fileID: 1117929865}
   gameSetObj: {fileID: 1412243432}
   ResultScore: {fileID: 1970070341}
@@ -1407,18 +1413,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1451863686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1451863682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 546f387f51c711843adc284869d65c56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 704020876}
 --- !u!114 &1451863687
 MonoBehaviour:
   m_ObjectHideFlags: 0

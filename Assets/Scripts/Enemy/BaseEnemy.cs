@@ -58,5 +58,7 @@ namespace Enemy
             targetPos.y = Random.Range(-1.0f, 1.0f);
         }
 
+
+
     }
 }

@@ -26,6 +26,7 @@ public class TargetSightController : MonoBehaviour {
             if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL)
             {
                 Fire();
+
                 //[TODO]TargetSightViewの関数を呼びたくない。
                 StartCoroutine(targetSightView.FireView());
             }
@@ -60,16 +61,18 @@ public class TargetSightController : MonoBehaviour {
             case PlayerStatus.PlayerState.NEAUTORAL:
                 bulletPower = 0;
                 targetSightView.sightSpeed = 100;
+                playerStatus.playerState = PlayerStatus.PlayerState.NEAUTORAL;
                 break;
             case PlayerStatus.PlayerState.SHAKEHAND:
                 bulletPower = 2.0f;
                 targetSightView.sightSpeed = 50;
+                playerStatus.playerState = PlayerStatus.PlayerState.SHAKEHAND;
                 break;
             case PlayerStatus.PlayerState.NOSHAKEHAND:
                 bulletPower = 1.0f;
                 targetSightView.sightSpeed = 200;
+                playerStatus.playerState = PlayerStatus.PlayerState.NOSHAKEHAND;
                 break;
-
         }
     }
 }
