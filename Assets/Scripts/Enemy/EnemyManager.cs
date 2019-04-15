@@ -24,7 +24,8 @@ public class EnemyManager : MonoBehaviour {
         int yPoint = Random.Range(-5, 5);
         Vector3 pos = new Vector3(xPoint, yPoint, 0);
 
-        Instantiate(enemyPrefabs[index], pos, Quaternion.identity);
+        var enemy = Instantiate(enemyPrefabs[index], pos, Quaternion.identity);
+        enemy.transform.parent = this.transform;
     }
 
 	// Use this for initialization

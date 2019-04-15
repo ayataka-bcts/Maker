@@ -40,6 +40,8 @@ public class TargetSightController : MonoBehaviour {
 
     void Fire()
     {
+        SoundManager.Instance.PlaySe("fire");
+
         Ray ray = Camera.main.ScreenPointToRay(this.transform.position);
         RaycastHit hit = new RaycastHit();
 
