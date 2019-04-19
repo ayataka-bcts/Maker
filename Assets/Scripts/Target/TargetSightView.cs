@@ -9,6 +9,7 @@ public class TargetSightView : MonoBehaviour {
     private ShakingSight shakingSight;      // 手ブレのためのクラス
 
     private Image _image;                   // 照準の画像
+    public float sightSpeed = 100.0f;        // 照準の移動速度
 
     [SerializeField]
     private GameObject Arduino;
@@ -21,12 +22,39 @@ public class TargetSightView : MonoBehaviour {
     /// <summary>
     /// マウスで動かす
     /// </summary>
-    private void SightMove()
+    private void MouseMove()
     {
         // マウスの座標(xyのみ)を反映
         var mousePos = Input.mousePosition;
         mousePos.z = this.transform.position.z;
         this.transform.position = shakingSight.Shake(mousePos);
+    }
+
+    ///<summary>
+    /// キーボード入力で操作(AWSD)
+    /// </summary>
+    private void ButtonMove()
+    {
+        var nowPos = this.transform.position;
+        
+        if (Input.GetKey(KeyCode.W))
+        {
+            nowPos.y += Time.deltaTime * sightSpeed;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            nowPos.y -= Time.deltaTime * sightSpeed;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            nowPos.x -= Time.deltaTime * sightSpeed;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            nowPos.x += Time.deltaTime * sightSpeed;
+        }
+
+        this.transform.position = shakingSight.Shake(nowPos);
     }
 
     /// <summary>
@@ -65,7 +93,10 @@ public class TargetSightView : MonoBehaviour {
 	void Update () {
 
         // 照準移動処理(マウス)
-        SightMove();
+        //MouseMove();
+
+        // 照準移動(ボタン)
+        ButtonMove();
 
         // 照準移動処理(スティック)
         //StickMove();

@@ -13,14 +13,28 @@ public class TimeManager : MonoBehaviour {
 
     private float count = 0;            // 経過時間
 
+    public float lestTime { get { return timeLimit - count; } }     // 残り時間
+
+    private bool _isCountUp = false;
+    public bool isCountUp { set { _isCountUp = value; } }
+
+    public void StopCount()
+    {
+
+    }
+
 	// Use this for initialization
 	void Start () {
         count = 0;
+        _isCountUp = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        timeCount.text = (timeLimit - count).ToString();
-        count += Time.deltaTime;
+        if (_isCountUp)
+        {
+            timeCount.text = (timeLimit - count).ToString();
+            count += Time.deltaTime;
+        }
 	}
 }
