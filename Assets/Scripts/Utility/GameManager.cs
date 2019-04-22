@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _isPlaying = true;
+
+        SoundManager.Instance.PlayBgm("main");
 	}
 	
 	// Update is called once per frame
