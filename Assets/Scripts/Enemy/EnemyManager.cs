@@ -20,11 +20,13 @@ public class EnemyManager : MonoBehaviour {
 
     public void Spawn(int index)
     {
-        int xPoint = Random.Range(-5, 5);
-        int yPoint = Random.Range(-5, 5);
-        Vector3 pos = new Vector3(xPoint, yPoint, 0);
+        float xPoint = Random.Range(-1.5f, 1.5f);
+        Vector3 pos = new Vector3(xPoint, -0.7f, -4.5f);
 
-        var enemy = Instantiate(enemyPrefabs[index], pos, Quaternion.identity);
+        Quaternion rot = Quaternion.identity;
+        rot = Quaternion.Euler(0, 180, 0);
+
+        var enemy = Instantiate(enemyPrefabs[index], pos, rot);
         enemy.transform.parent = this.transform;
     }
 
