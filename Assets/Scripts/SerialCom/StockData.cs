@@ -9,6 +9,10 @@ public class StockData : MonoBehaviour {
     public float RValue;
     public float Xin;
     public float Yin;
+    public int Button;
+    public int BPM_P1;
+    public int BPM_P2;
+
     // Use this for initialization
     void Start () {
         serialHandler.OnDataReceived += OnDataReceived;
@@ -29,10 +33,13 @@ public class StockData : MonoBehaviour {
             RValue = float.Parse(datas[0]) * 4;
             Xin = float.Parse(datas[1]);
             Yin = float.Parse(datas[2]);
+            Button = int.Parse(datas[7]);
+            BPM_P1 = int.Parse(datas[4]);
+            BPM_P2 = int.Parse(datas[6]);
             //           Debug.LogWarning("RValue1 : " + RValue);
             //           RValue = RValue * 4;
             //           Debug.LogWarning("RValue2 : "+RValue);
-            text.text = "ResisterValue : " + RValue.ToString() + "\n" + "XIN : " + datas[1] + "\n" + "YIN : " + datas[2]; // シリアルの値をテキストに表示
+            text.text = "手を繋ぐ強さ : " + RValue.ToString() + "\n" + "XIN : " + datas[1] + "\n" + "YIN : " + datas[2] + "\n" + "Button : " + datas[7] + "\n" + "BPM_P1 : " + datas[4] + "\n" + "BPM_P2 : " + datas[6]; // シリアルの値をテキストに表示
         }
         catch (System.Exception e)
         {

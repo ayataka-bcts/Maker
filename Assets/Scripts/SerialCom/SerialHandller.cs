@@ -8,7 +8,7 @@ public class SerialHandller : MonoBehaviour
     public delegate void SerialDataReceivedEventHandler(string message);
     public event SerialDataReceivedEventHandler OnDataReceived = delegate { };
 
-    public string portName = "COM4";
+    public string portName = "COM3";
     public int baudRate = 9800;
 
     private SerialPort serialPort_;

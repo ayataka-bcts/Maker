@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetSightController : MonoBehaviour {
 
     private float distance = 50f;        // レイの飛距離(いじらなくてもいい)
     private float bulletPower = 1.0f;    // 銃の威力(1が標準)
 
+    private float button = 0;
+
     [SerializeField]
     private TargetSightView targetSightView;
     private PlayerStatus playerStatus;
+    private GameObject Arduino;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         playerStatus = new PlayerStatus();
 	}
 	
@@ -20,7 +24,8 @@ public class TargetSightController : MonoBehaviour {
 	void Update () {
 
         // 射撃(スペースキー)
-        if (Input.GetKeyDown(KeyCode.Space))
+               if (Input.GetKeyDown(KeyCode.Space))
+        //       if (button == 1)
         {
             // 手つなぎ状態のみ発砲可能
             if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL)

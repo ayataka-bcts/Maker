@@ -78,11 +78,11 @@ public class TargetSightView : MonoBehaviour {
         }
 
         //アナログスティック
-        Vector3 direction = Vector3.up * yin + Vector3.right * xin;
+        Vector3 direction = Vector3.up * -yin + Vector3.right * xin;
         Vector3 playerdir = direction;
 
         //現在の位置＋入力した数値の場所に移動する
-        this.transform.position = this.transform.position + direction * speed;
+        this.transform.position = shakingSight.Shake(this.transform.position + direction * speed);
     }
 
 	void Start () {
