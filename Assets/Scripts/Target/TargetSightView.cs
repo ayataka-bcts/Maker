@@ -67,7 +67,7 @@ public class TargetSightView : MonoBehaviour {
 
         //アナログスティック使用時
         xin = (xin - 513.0f) / 258.5f;
-        yin = (yin - 510.0f) / 253.0f;
+        yin = (yin - 510.0f) / -253.0f;
         if (xin >= -0.05f && xin <= 0.05f)
         {
             xin = 0.0f;
@@ -82,7 +82,7 @@ public class TargetSightView : MonoBehaviour {
         Vector3 playerdir = direction;
 
         //現在の位置＋入力した数値の場所に移動する
-        this.transform.position = this.transform.position + direction * speed;
+        this.transform.position = shakingSight.Shake(this.transform.position + direction * speed);
     }
 
 	void Start () {

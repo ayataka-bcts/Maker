@@ -7,17 +7,23 @@ public class DebugManager : MonoBehaviour {
     [SerializeField]
     private TargetSightController targetSightController;
 
+    [SerializeField]
+    private GameObject Arduino;     //アルディーノの値を読めるように by Sakaki
+
     private void ManualModeChange()
     {
         if (Input.GetKeyDown(KeyCode.O))
+ //       if (Arduino.GetComponent<StockData>().RValue <= 200)        //Arduino用
         {
             targetSightController.ChangePlayerState(PlayerStatus.PlayerState.NEAUTORAL);
         }
         if (Input.GetKeyDown(KeyCode.I))
+ //       if (Arduino.GetComponent<StockData>().RValue > 200 && Arduino.GetComponent<StockData>().RValue > 500)       //Arduino用
         {
             targetSightController.ChangePlayerState(PlayerStatus.PlayerState.SHAKEHAND);
         }
         if (Input.GetKeyDown(KeyCode.Z))
+ //       if (Arduino.GetComponent<StockData>().RValue > 500)     //Arduino用
         {
             targetSightController.ChangePlayerState(PlayerStatus.PlayerState.NOSHAKEHAND);
         }

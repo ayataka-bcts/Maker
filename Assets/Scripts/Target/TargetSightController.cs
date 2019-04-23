@@ -9,6 +9,8 @@ public class TargetSightController : MonoBehaviour {
 
     [SerializeField]
     private TargetSightView targetSightView;
+    [SerializeField]
+    private GameObject Arduino;     //アルディーノの値を読めるように by Sakaki
     private PlayerStatus playerStatus;
 
 	// Use this for initialization
@@ -21,6 +23,7 @@ public class TargetSightController : MonoBehaviour {
 
         // 射撃(スペースキー)
         if (Input.GetKeyDown(KeyCode.Space))
+//        if (Arduino.GetComponent<StockData>().Button == 1)        //Arduino用
         {
             // 手つなぎ状態のみ発砲可能
             if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL)
