@@ -8,9 +8,12 @@ public class TargetSightController : MonoBehaviour {
     private float bulletPower = 1.0f;    // 銃の威力(1が標準)
 
     [SerializeField]
+    private ParticleSystem flush;
+    [SerializeField]
     private TargetSightView targetSightView;
     [SerializeField]
     private GameObject Arduino;     //アルディーノの値を読めるように by Sakaki
+
     private PlayerStatus playerStatus;
 
 	// Use this for initialization
@@ -44,8 +47,11 @@ public class TargetSightController : MonoBehaviour {
     void Fire()
     {
         SoundManager.Instance.PlaySe("fire");
+        flush.Play();
 
-        Ray ray = Camera.main.ScreenPointToRay(this.transform.position);
+        Vector2 localPos = Vector2.zero;
+        //Ray ray = Camera.main.ScreenPointToRay(localPos);
+        Ray ray = new Ray(this.transform.position, Vector3.forward);
         RaycastHit hit = new RaycastHit();
 
         if (Physics.Raycast(ray, out hit, distance)){
