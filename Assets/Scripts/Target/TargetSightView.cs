@@ -35,7 +35,7 @@ public class TargetSightView : MonoBehaviour {
     /// </summary>
     private void ButtonMove()
     {
-        var nowPos = this.transform.position;
+        var nowPos = this.transform.localPosition;
         
         if (Input.GetKey(KeyCode.W))
         {
@@ -54,7 +54,7 @@ public class TargetSightView : MonoBehaviour {
             nowPos.x += Time.deltaTime * sightSpeed;
         }
 
-        this.transform.position = shakingSight.Shake(nowPos);
+        this.transform.localPosition = shakingSight.Shake(nowPos);
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class TargetSightView : MonoBehaviour {
         Vector3 playerdir = direction;
 
         //現在の位置＋入力した数値の場所に移動する
-        this.transform.position = shakingSight.Shake(this.transform.position + direction * speed);
+        this.transform.localPosition = shakingSight.Shake(this.transform.position + direction * speed);
     }
 
 	void Start () {

@@ -29,14 +29,17 @@ public class TutorialPannel : MonoBehaviour {
 
         countDown.gameObject.SetActive(true);
         countDown.text = "3";
+        //SoundManager.Instance.PlaySe();
 
         yield return new WaitForSecondsRealtime(1.0f);
 
         countDown.text = "2";
+        //SoundManager.Instance.PlaySe();
 
         yield return new WaitForSecondsRealtime(1.0f);
 
         countDown.text = "1";
+        //SoundManager.Instance.PlaySe();
 
         yield return new WaitForSecondsRealtime(1.0f);
 
