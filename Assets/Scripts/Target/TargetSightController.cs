@@ -6,6 +6,7 @@ public class TargetSightController : MonoBehaviour {
 
     private float distance = 50f;        // レイの飛距離(いじらなくてもいい)
     private float bulletPower = 1.0f;    // 銃の威力(1が標準)
+    private int button_flag = 0;
 
     [SerializeField]
     private ParticleSystem flush;
@@ -29,18 +30,24 @@ public class TargetSightController : MonoBehaviour {
 //        if (Arduino.GetComponent<StockData>().Button == 1)        //Arduino用
         {
             // 手つなぎ状態のみ発砲可能
-            if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL)
+            if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL && button_flag == 0)
             {
                 Fire();
 
                 //[TODO]TargetSightViewの関数を呼びたくない。
                 StartCoroutine(targetSightView.FireView());
+
+                button_flag = 1;
             }
             // 発砲できないときのエフェクト(SEで教えてあげるのがいいかな)
             else
             {
-
+            
             }
+        }
+        else
+        {
+            button_flag = 0;
         }
     }
 
