@@ -18,12 +18,12 @@ public class DebugManager : MonoBehaviour {
             targetSightController.ChangePlayerState(PlayerStatus.PlayerState.NEAUTORAL);
         }
         if (Input.GetKeyDown(KeyCode.I))
- //       if (Arduino.GetComponent<StockData>().RValue > 200 && Arduino.GetComponent<StockData>().RValue > 500)       //Arduino用
+ //       if (Arduino.GetComponent<StockData>().RValue > 200 && Arduino.GetComponent<StockData>().RValue > 750)       //Arduino用
         {
             targetSightController.ChangePlayerState(PlayerStatus.PlayerState.SHAKEHAND);
         }
         if (Input.GetKeyDown(KeyCode.Z))
- //       if (Arduino.GetComponent<StockData>().RValue > 500)     //Arduino用
+ //       if (Arduino.GetComponent<StockData>().RValue > 750)     //Arduino用
         {
             targetSightController.ChangePlayerState(PlayerStatus.PlayerState.NOSHAKEHAND);
         }
