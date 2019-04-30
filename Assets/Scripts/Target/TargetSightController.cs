@@ -56,10 +56,13 @@ public class TargetSightController : MonoBehaviour {
         SoundManager.Instance.PlaySe("fire");
         flush.Play();
 
-        Vector2 localPos = Vector2.zero;
-        //Ray ray = Camera.main.ScreenPointToRay(localPos);
-        Ray ray = new Ray(this.transform.position, Vector3.forward);
+        RectTransform rect = GetComponent<RectTransform>();
+        Vector3 localPos = Vector3.zero;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(rect, this.transform.position, Camera.main, out localPos);
+        Ray ray = new Ray(Camera.main.transform.position, this.transform.position);
+        //Ray ray = new Ray(this.transform.position, Vector3.forward);
         RaycastHit hit = new RaycastHit();
+        Debug.DrawLine(ray.origin, ray.direction * distance, Color.red);
 
         if (Physics.Raycast(ray, out hit, distance)){
 

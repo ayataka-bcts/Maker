@@ -20,8 +20,8 @@ public class EnemyManager : MonoBehaviour {
 
     public void Spawn(int index)
     {
-        float xPoint = Random.Range(-1.5f, 1.5f);
-        Vector3 pos = new Vector3(xPoint, -0.7f, -4.5f);
+        float xPoint = Random.Range(-2.5f, 2.5f);
+        Vector3 pos = new Vector3(xPoint, -0.7f, 10.0f);
 
         Quaternion rot = Quaternion.identity;
         rot = Quaternion.Euler(0, 180, 0);

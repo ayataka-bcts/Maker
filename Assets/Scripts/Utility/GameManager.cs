@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
     // 敵のスポーン
     private void SpawnEnemy()
     {
-        if ((int)timeManager.lestTime % 5 == 0)
+        if ((int)timeManager.lestTime % 3 == 0)
         {
             if (!_isSpawn)
             {
