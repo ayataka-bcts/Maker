@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class StockData : MonoBehaviour {
     public SerialHandller serialHandler;
     public Text text;
+    public Text BPM1;
+    public Text BPM2;
     public string[] datas;
     public float RValue;        //手を繋いだ時の抵抗の割合
     public float Xin;           //スティック入力X
@@ -39,6 +41,8 @@ public class StockData : MonoBehaviour {
             //           RValue = RValue * 4;
             //           Debug.LogWarning("RValue2 : "+RValue);
             text.text = "ResisterValue : " + RValue.ToString() + "\n" + "XIN : " + datas[1] + "\n" + "YIN : " + datas[2] + "\n" + "button : " + datas[7]; // シリアルの値をテキストに表示
+            BPM1.text = datas[4];
+            BPM2.text = datas[6];
         }
         catch (System.Exception e)
         {
