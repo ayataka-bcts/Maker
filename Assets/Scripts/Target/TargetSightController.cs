@@ -28,8 +28,8 @@ public class TargetSightController : MonoBehaviour {
 	void Update () {
 
         // 射撃(スペースキー)
-        if (Input.GetKeyDown(KeyCode.Space))
-//        if (Arduino.GetComponent<StockData>().Button == 1)        //Arduino用
+ //       if (Input.GetKeyDown(KeyCode.Space))
+        if (Arduino.GetComponent<StockData>().Button == 1)        //Arduino用
         {
             // 手つなぎ状態のみ発砲可能
             if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL && button_flag == 0)
@@ -88,7 +88,7 @@ public class TargetSightController : MonoBehaviour {
                 break;
             case PlayerStatus.PlayerState.SHAKEHAND:
                 bulletPower = 2.0f;
-                targetSightView.sightSpeed = 50;
+                targetSightView.sightSpeed = 1000;
                 playerStatus.playerState = PlayerStatus.PlayerState.SHAKEHAND;
                 break;
             case PlayerStatus.PlayerState.NOSHAKEHAND:

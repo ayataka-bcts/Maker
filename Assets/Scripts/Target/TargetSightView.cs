@@ -82,7 +82,7 @@ public class TargetSightView : MonoBehaviour {
         Vector3 playerdir = direction;
 
         //現在の位置＋入力した数値の場所に移動する
-        this.transform.localPosition = shakingSight.Shake(this.transform.position + direction * speed);
+        this.transform.position = shakingSight.Shake(this.transform.position + direction * speed);
     }
 
 	void Start () {
@@ -96,10 +96,10 @@ public class TargetSightView : MonoBehaviour {
         //MouseMove();
 
         // 照準移動(ボタン)
-        ButtonMove();
+        //ButtonMove();
 
         // 照準移動処理(スティック)
-        //StickMove();
+        StickMove();
 	}
 
     // 発砲してるときの見た目
