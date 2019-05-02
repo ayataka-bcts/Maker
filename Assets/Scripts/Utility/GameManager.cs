@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     [SerializeField]
-    private EnemyManager enemyManager;
+    private Enemy.EnemyManager enemyManager;
     [SerializeField]
     private ScoreManager scoreManager;
     [SerializeField]
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour {
         {
             if (!_isSpawn)
             {
-                int rnd = Random.Range(0, 2);
+                int rnd = Random.Range(0, 5);
                 enemyManager.Spawn(rnd);
 
                 _isSpawn = true;
@@ -67,6 +67,23 @@ public class GameManager : MonoBehaviour {
             _isSpawn = false;
         }
         
+    }
+
+    //タイプによって算出方法を分岐
+    private void ScoreCululate(Enemy.EnemyType type){
+        switch(type){
+            case Enemy.EnemyType.SLOW:
+                scoreManager.AddScore(10);
+                break;
+            case Enemy.EnemyType.FAST:
+                scoreManager.AddScore(30);
+                break;
+            case Enemy.EnemyType.NPC:
+                scoreManager.MinusScore(30);
+                break;
+        }
+                
+        enemyManager.isDeadEnemy = false;
     }
 
 	// Use this for initialization
@@ -86,8 +103,7 @@ public class GameManager : MonoBehaviour {
             // 敵を倒したときのスコア加算
             if (enemyManager.isDeadEnemy)
             {
-                scoreManager.AddScore(10);
-                enemyManager.isDeadEnemy = false;
+                ScoreCululate(enemyManager.deadEnemy.enemyType);
             }
 
             // ゲーム終了処理

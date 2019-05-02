@@ -14,6 +14,8 @@ public class TargetSightController : MonoBehaviour {
     private TargetSightView targetSightView;
     [SerializeField]
     private GameObject Arduino;     //アルディーノの値を読めるように by Sakaki
+    [SerializeField]
+    private RectTransform _rect;
 
     private PlayerStatus playerStatus;
 
@@ -56,10 +58,10 @@ public class TargetSightController : MonoBehaviour {
         SoundManager.Instance.PlaySe("fire");
         flush.Play();
 
-        RectTransform rect = GetComponent<RectTransform>();
-        Vector3 localPos = Vector3.zero;
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(rect, this.transform.position, Camera.main, out localPos);
-        Ray ray = new Ray(Camera.main.transform.position, this.transform.position);
+        Vector2 localPos = Vector2.zero;
+        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, this.transform.position);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_rect, screenPos, Camera.main, out localPos);
+        Ray ray = Camera.main.ScreenPointToRay(this.transform.position);
         //Ray ray = new Ray(this.transform.position, Vector3.forward);
         RaycastHit hit = new RaycastHit();
         Debug.DrawLine(ray.origin, ray.direction * distance, Color.red);

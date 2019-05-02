@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4381072, g: 0.486099, b: 0.56637836, a: 1}
+  m_IndirectSpecularColor: {r: 0.4381069, g: 0.4860986, b: 0.56637806, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -494,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &435937183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -502,8 +502,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 435937182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1547}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 993}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 544494758}
   m_RootOrder: 0
@@ -1529,7 +1529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &969287111
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1593,8 +1593,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 969287110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 1.22, z: 16.11}
-  m_LocalScale: {x: 30, y: 20, z: 1}
+  m_LocalPosition: {x: -0.18, y: 1.8, z: 47.6}
+  m_LocalScale: {x: 100, y: 70, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -2336,7 +2336,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 760584221}
-  m_PlaneDistance: 1
+  m_PlaneDistance: 3
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2477,6 +2477,7 @@ MonoBehaviour:
   flush: {fileID: 1971186847}
   targetSightView: {fileID: 1869221418}
   Arduino: {fileID: 1896575099}
+  _rect: {fileID: 544494758}
 --- !u!114 &1869221416
 MonoBehaviour:
   m_ObjectHideFlags: 0
