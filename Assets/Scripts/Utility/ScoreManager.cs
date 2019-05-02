@@ -28,12 +28,21 @@ public class ScoreManager : MonoBehaviour {
 
     public void DisplayScore()
     {
+        if(_score < 0){
+            _score = 0;
+        }
+            
         scoreText.text = _score.ToString();
     }
 
     public void AddScore(int point)
     {
         _score += point;
+        DisplayScore();
+    }
+
+    public void MinusScore(int point){
+        _score -= point;
         DisplayScore();
     }
 }

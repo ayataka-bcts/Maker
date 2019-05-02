@@ -12,6 +12,8 @@ public class TutorialPannel : MonoBehaviour {
     [SerializeField]
     private GameObject fadeInPannel;
 
+    private bool _isCountDowm = false;
+
     IEnumerator FadeIn()
     {
         fadeInPannel.SetActive(true);
@@ -23,6 +25,7 @@ public class TutorialPannel : MonoBehaviour {
 
     IEnumerator CountDown()
     {
+        _isCountDowm = true;
         _animator.SetTrigger("_FadeOut");
 
         yield return new WaitForSecondsRealtime(1.0f);
@@ -55,6 +58,7 @@ public class TutorialPannel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _animator = this.GetComponent<Animator>();
+        _isCountDowm = false;
 
         StartCoroutine(FadeIn());
         Time.timeScale = 0.0f;
@@ -62,7 +66,7 @@ public class TutorialPannel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !_isCountDowm)
         {
             StartCoroutine(CountDown());
         }	

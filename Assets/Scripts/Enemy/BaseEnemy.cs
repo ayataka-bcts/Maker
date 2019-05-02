@@ -8,9 +8,26 @@ namespace Enemy
     {
         protected int life;                     // 耐久力
         protected float speed;                  // 移動速度
-        protected bool isDead = false;          // 生死
+        public bool isDead {get; private set;}  // 生死
+        public EnemyType enemyType {get; protected set;}
         protected EnemyManager enemyManager;
         private Vector2 targetPos;
+
+        /// <summary>
+        /// 死んだ時の処理一連
+        /// </summary>
+        private IEnumerator DeadSequence(){
+
+            if(enemyType == EnemyType.NPC){
+                this.GetComponent<Animator>().SetTrigger("_isDead");
+
+                yield return new WaitForSeconds(1.0f);
+            }
+
+            yield return null;
+
+            Dead();
+        }
 
         /// <summary>
         /// 撃たれた時の処理
@@ -22,8 +39,9 @@ namespace Enemy
             // 死んだかどうかの判定
             if (life < 0)
             {
+                enemyManager.enemyCount--;
                 isDead = true;
-                Dead();
+                StartCoroutine(DeadSequence());
             }
         }
 
@@ -34,8 +52,8 @@ namespace Enemy
         {
             if (isDead)
             {
+                isDead = false;
                 Destroy(this.gameObject);
-                enemyManager.enemyCount--;
             }
         }
 
@@ -44,10 +62,9 @@ namespace Enemy
         /// </summary>
         protected void Move()
         {
-            Vector3 pos = transform.position;
-            pos.x += targetPos.x * speed;
-            pos.y += targetPos.y * speed;
-            transform.position = pos;
+            var pos = this.transform.position;
+            pos.z -= Time.deltaTime * speed;
+            this.transform.position = pos;
         }
 
         // 以下仮実装なので消すかも
