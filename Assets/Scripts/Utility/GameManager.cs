@@ -19,10 +19,16 @@ public class GameManager : MonoBehaviour {
     private GameObject gameSetObj;
     [SerializeField]
     private Text ResultScore;
+    [SerializeField]
+    private Text scoreShoot;
+
+    public int duration = 1;
+    int count = 0;
 
     private bool _isSpawn = false;
 
     private bool _isPlaying = false;
+    public static bool isPlaying = false;
 
     public void ResultButton(string sceneName)
     {
@@ -52,34 +58,63 @@ public class GameManager : MonoBehaviour {
     // 敵のスポーン
     private void SpawnEnemy()
     {
-        if ((int)timeManager.lestTime % 3 == 0)
+        if ((int)timeManager.lestTime % duration == 0)
         {
             if (!_isSpawn)
             {
                 int rnd = Random.Range(0, 5);
                 enemyManager.Spawn(rnd);
 
-                _isSpawn = true;
+                if (count > 0)
+                {
+                    _isSpawn = true;
+                }
+
+                count++;
             }
         }
         else
         {
             _isSpawn = false;
+            count = 0;
         }
         
+    }
+
+    IEnumerator ChangeScore(int point)
+    {
+        this.gameObject.SetActive(true);
+
+        if(point < 0)
+        {
+            scoreShoot.color = new Color(250, 51, 51); // 赤
+            scoreShoot.text = "- " + point.ToString();
+        }
+        else if (point > 0)
+        {
+            scoreShoot.color = new Color(93, 255, 18); // 緑
+            scoreShoot.text = "+ " + point.ToString();
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        this.gameObject.SetActive(false);
     }
 
     //タイプによって算出方法を分岐
     private void ScoreCululate(Enemy.EnemyType type){
         switch(type){
             case Enemy.EnemyType.SLOW:
-                scoreManager.AddScore(10);
+                scoreManager.AddScore(20);
+                //StartCoroutine(ChangeScore(10));
                 break;
             case Enemy.EnemyType.FAST:
                 scoreManager.AddScore(30);
+                //StartCoroutine(ChangeScore(30));
                 break;
             case Enemy.EnemyType.NPC:
-                scoreManager.MinusScore(30);
+                scoreManager.AddScore(-30);
+                //StartCoroutine(ChangeScore(-30));
                 break;
         }
                 
@@ -88,14 +123,13 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _isPlaying = true;
-
+        isPlaying = false;
         SoundManager.Instance.PlayBgm("main");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (_isPlaying)
+        if (isPlaying)
         {
             // 敵のスポーン
             SpawnEnemy();
@@ -111,7 +145,7 @@ public class GameManager : MonoBehaviour {
             {
                 GameSet();
                 _isPlaying = false;
-                timeManager.isCountUp = false;
+                TimeManager.isCountUp = false;
             }
         }
 	}

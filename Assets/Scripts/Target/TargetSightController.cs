@@ -32,7 +32,7 @@ public class TargetSightController : MonoBehaviour {
         if (Arduino.GetComponent<StockData>().Button == 1)        //Arduino用
         {
             // 手つなぎ状態のみ発砲可能
-            if (playerStatus.playerState != PlayerStatus.PlayerState.NEAUTORAL && button_flag == 0)
+            if (playerStatus.playerState != PlayerStatus.PlayerState.NOSHAKEHAND && button_flag == 0)
             {
                 Fire();
 
@@ -72,8 +72,9 @@ public class TargetSightController : MonoBehaviour {
             if (hit.collider.GetComponent<IDamageable>() != null)
             {
                 // ダメージ処理
-                hit.collider.GetComponent<IDamageable>().Damage();
+                hit.collider.GetComponent<IDamageable>().Damage(bulletPower);
             }
+
         }
     }
 
@@ -81,20 +82,20 @@ public class TargetSightController : MonoBehaviour {
     {
         switch (state)
         {
-            case PlayerStatus.PlayerState.NEAUTORAL:
+            case PlayerStatus.PlayerState.NOSHAKEHAND:
                 bulletPower = 0;
-                targetSightView.sightSpeed = 100;
-                playerStatus.playerState = PlayerStatus.PlayerState.NEAUTORAL;
+                targetSightView.sightSpeed = 8;
+                playerStatus.playerState = PlayerStatus.PlayerState.NOSHAKEHAND;
                 break;
             case PlayerStatus.PlayerState.SHAKEHAND:
-                bulletPower = 2.0f;
-                targetSightView.sightSpeed = 1000;
+                bulletPower = 1.0f;
+                targetSightView.sightSpeed = 5;
                 playerStatus.playerState = PlayerStatus.PlayerState.SHAKEHAND;
                 break;
-            case PlayerStatus.PlayerState.NOSHAKEHAND:
-                bulletPower = 1.0f;
-                targetSightView.sightSpeed = 200;
-                playerStatus.playerState = PlayerStatus.PlayerState.NOSHAKEHAND;
+            case PlayerStatus.PlayerState.HOLDHAND:
+                bulletPower = 2.0f;
+                targetSightView.sightSpeed = 2;
+                playerStatus.playerState = PlayerStatus.PlayerState.HOLDHAND;
                 break;
         }
     }

@@ -14,6 +14,10 @@ public class StockData : MonoBehaviour {
     public int Button;          //トリガー
     public float BPM_P1;        //BPM プレイヤー1
     public float BPM_P2;
+
+    [SerializeField]
+    private GameManager gameManager;
+
     // Use this for initialization
     void Start () {
         serialHandler.OnDataReceived += OnDataReceived;
@@ -21,7 +25,14 @@ public class StockData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+            if (BPM_P2 > 90)
+            {
+                //gameManager.duration = 1;
+            }
+            else if (BPM_P2 < 90)
+            {
+                //gameManager.duration = 2;
+            }
 	}
     void OnDataReceived(string message)
     {

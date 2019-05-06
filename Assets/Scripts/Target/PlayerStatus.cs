@@ -9,9 +9,9 @@ public class PlayerStatus {
     // enumにしておくと状態変数が後々増えたとしても対応付けがわかりやすいのでこっちで管理しています
     public enum PlayerState
     {
-        NEAUTORAL = 0,
+        NOSHAKEHAND = 0,
         SHAKEHAND = 1,
-        NOSHAKEHAND = 2,
+        HOLDHAND = 2,
     }
 
     private PlayerState _playerState;
@@ -19,7 +19,7 @@ public class PlayerStatus {
 
 	// Use this for initialization
 	public PlayerStatus() {
-        _playerState = PlayerState.NEAUTORAL;	
+        _playerState = PlayerState.NOSHAKEHAND;	
 	}
 	
 }

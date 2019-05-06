@@ -9,14 +9,14 @@ public class TimeManager : MonoBehaviour {
     private Text timeCount;             // 表示用テキスト
 
     [SerializeField]
-    private int timeLimit = 30;         // 制限時間
+    private int timeLimit = 60;         // 制限時間
 
     private float count = 0;            // 経過時間
 
     public float lestTime { get { return timeLimit - count; } }     // 残り時間
 
     private bool _isCountUp = false;
-    public bool isCountUp { set { _isCountUp = value; } }
+    public static bool isCountUp = false;
 
     public void StopCount()
     {
@@ -26,14 +26,14 @@ public class TimeManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         count = 0;
-        _isCountUp = true;
+        isCountUp = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (_isCountUp)
+        if (isCountUp)
         {
-            timeCount.text = (timeLimit - count).ToString();
+            timeCount.text = (timeLimit - count).ToString("##.##");
             count += Time.deltaTime;
         }
 	}

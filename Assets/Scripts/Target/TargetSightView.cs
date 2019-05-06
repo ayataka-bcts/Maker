@@ -17,6 +17,11 @@ public class TargetSightView : MonoBehaviour {
     public static float xin;
     public static float yin;
 
+    private float maxRight = 1850f;
+    private float maxLeft = 50f;
+    private float maxButtom = 260f;
+    private float maxTop = 1020f;
+
     float speed = 1.0f;
 
     /// <summary>
@@ -82,7 +87,35 @@ public class TargetSightView : MonoBehaviour {
         Vector3 playerdir = direction;
 
         //現在の位置＋入力した数値の場所に移動する
-        this.transform.position = shakingSight.Shake(this.transform.position + direction * speed);
+        this.transform.position = shakingSight.Shake(this.transform.position + direction * sightSpeed);
+        
+        if(this.transform.position.x > maxRight)
+        {
+            var pos = this.transform.position;
+            pos.x = maxRight;
+            this.transform.position = pos;
+        }
+
+        if (this.transform.position.x < maxLeft)
+        {
+            var pos = this.transform.position;
+            pos.x = maxLeft;
+            this.transform.position = pos;
+        }
+
+        if (this.transform.position.y > maxTop)
+        {
+            var pos = this.transform.position;
+            pos.y = maxTop;
+            this.transform.position = pos;
+        }
+
+        if (this.transform.position.y < maxButtom)
+        {
+            var pos = this.transform.position;
+            pos.y = maxButtom;
+            this.transform.position = pos;
+        }
     }
 
 	void Start () {

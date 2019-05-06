@@ -9,7 +9,7 @@ namespace Enemy
 	// Use this for initialization
 	void Start () {
 		enemyType = EnemyType.NPC;
-		speed = 0.8f;
+		speed = 1.2f;
         life = 1;
         enemyManager = this.transform.parent.GetComponent<EnemyManager>();
 	}
