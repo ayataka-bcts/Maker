@@ -25,8 +25,8 @@ namespace Enemy
 
     public void Spawn(int index)
     {
-        float xPoint = Random.Range(-2.5f, 2.5f);
-        Vector3 pos = new Vector3(xPoint, -0.3f, 5.0f);
+        float xPoint = Random.Range(-3.0f, 3.0f);
+        Vector3 pos = new Vector3(xPoint, -0.3f, 1.5f);
 
         Quaternion rot = Quaternion.identity;
         rot = Quaternion.Euler(0, 180, 0);

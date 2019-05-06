@@ -19,12 +19,20 @@ namespace Enemy
         private IEnumerator DeadSequence(){
 
             if(enemyType == EnemyType.NPC){
+
                 this.GetComponent<Animator>().SetTrigger("_isDead");
 
-                yield return new WaitForSeconds(1.0f);
-            }
+                SoundManager.Instance.PlaySe("cancel");
 
-            yield return null;
+                yield return new WaitForSeconds(1.0f);
+
+            }
+            else
+            {
+                yield return null;
+
+                SoundManager.Instance.PlaySe("button");
+            }
 
             Dead();
         }
@@ -32,12 +40,12 @@ namespace Enemy
         /// <summary>
         /// 撃たれた時の処理
         /// </summary>
-        public void Damage()
+        public void Damage(float damage)
         {
-            life--;
+            life -= (int)damage;
 
             // 死んだかどうかの判定
-            if (life < 0)
+            if (life <= 0)
             {
                 enemyManager.enemyCount--;
                 isDead = true;

@@ -12,6 +12,9 @@ public class TutorialPannel : MonoBehaviour {
     [SerializeField]
     private GameObject fadeInPannel;
 
+    [SerializeField]
+    private StockData _stockData;
+
     private bool _isCountDowm = false;
 
     IEnumerator FadeIn()
@@ -51,8 +54,10 @@ public class TutorialPannel : MonoBehaviour {
         yield return new WaitForSecondsRealtime(1.0f);
 
         Time.timeScale = 1.0f;
+        GameManager.isPlaying = true;
+        TimeManager.isCountUp = true;
         Destroy(this.gameObject);
-
+        
     }
 
 	// Use this for initialization
@@ -66,8 +71,9 @@ public class TutorialPannel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space) && !_isCountDowm)
+        if ((Input.GetKeyDown(KeyCode.Space) || _stockData.Button == 1) && !_isCountDowm)
         {
+            SoundManager.Instance.PlaySe("fire");
             StartCoroutine(CountDown());
         }	
 	}

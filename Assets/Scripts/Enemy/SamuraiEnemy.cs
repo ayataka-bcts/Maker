@@ -9,9 +9,9 @@ namespace Enemy
         // Use this for initialization
         void Start()
         {
-            enemyType = EnemyType.FAST;
-            speed = 0.8f;
-            life = 1;
+            enemyType = EnemyType.SLOW;
+            speed = 1.0f;
+            life = 2;
             enemyManager = this.transform.parent.GetComponent<EnemyManager>();
         }
 
